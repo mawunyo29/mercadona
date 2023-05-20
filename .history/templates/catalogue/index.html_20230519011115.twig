@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des produits
+{% endblock %}
+{% block header %}
+	{{ include('partials/header.html.twig') }}
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex" style="width: 100%">
+		<div class="d-flex flex-nowrap">
+			<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
+				<a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+					<svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+					<span class="fs-5 fw-semibold">List group</span>
+				</a>
+				<div class="list-group list-group-flush border-bottom scrollarea">
+					<a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small>Wed</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Tues</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Mon</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Wed</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Tues</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Mon</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Wed</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Tues</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Mon</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Wed</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Tues</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
+						<div class="d-flex w-100 align-items-center justify-content-between">
+							<strong class="mb-1">List group item heading</strong>
+							<small class="text-muted">Mon</small>
+						</div>
+						<div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+					</a>
+				</div>
+			</div>
+
+
+		</div>
+
+		<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+			<div class="">
+				<div class="example-wrapper">
+					<h1 class="display-4">Liste des produits</h1>
+					<div class="row">
+						{% if products %}
+							{# product card #}
+							{% for product in products %}
+								<div class="col-sm-2 mb-3 mb-sm-0" {{loop.index}}>
+									<div class="card mb-3 " style="max-width:25rem; ">
+										{% if product.getImageName %}
+											{# card header #}
+											<img src="{{vich_uploader_asset(product ,'imageFile') }}" class="card-img-top rounded float-start img-fluid" alt="..." style=" height:10rem">
+										{% endif %}
+										<div class="card-body">
+											<h5 class="card-title">
+												{{ product.wording }}
+											</h5>
+											<p class="card-text overflow-y-scroll" style=" max-height:10rem">{{product.getProductDescription|striptags|raw|nl2br}}</p>
+
+										</div>
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item">
+												Catégorie:
+												{{product.category}}</li>
+											<li class="list-group-item">
+												<p class="card-text">
+													Prix:
+													{% if product.promotions|length >0  %}
+														<small class="font-weight-bold text-danger">{{ product.getProductPrice}}
+															€</small>
+													{% else %}
+														<small class="text-muted">{{ product.getProductPrice}}
+															€</small>
+													{% endif %}
+												</p>
+											</li>
+											<li class="list-group-item">A third item</li>
+										</ul>
+									</div>
+								</div>
+							{% endfor %}
+						{% endif %}
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block footer %}
+	{{ include('partials/footer.html.twig') }}
+{% endblock %}

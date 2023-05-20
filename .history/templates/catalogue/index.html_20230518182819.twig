@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CatalogueController!
+{% endblock %}
+{% block header %}
+	{{ include('pages/header.html.twig') }}
+{% endblock %}
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<main class="flex-shrink-0">
+		<div class="container"></div>
+	</main>
+
+{% endblock %}
+{% block footer %}
+	{{ include('pages/footer.html.twig') }}
+{% endblock %}

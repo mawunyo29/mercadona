@@ -1,0 +1,22 @@
+{% block header %}
+    <h1>My Blog</h1>
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+            <header>
+                <h1><a href="{{ url_for('show_post', post_id=post.id) }}">{{ post.title }}</a></h1>
+                <div class="about">
+                    <span class="by">by</span>
+                    <span class="author">{{ post.author.username }}</span>
+                    <span class="date">{{ post.pub_date.strftime('%d %b %Y') }}</span>
+                </div>
+            </header>
+            <p class="body">{{ post.body }}</p>
+        </article>
+    {% else %}
+        <div class="no-posts">No posts here so far.</div>
+    {% endfor %}
+{% endblock %}
+```

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des produits
+{% endblock %}
+{% block header %}
+	{{ include('partials/header.html.twig') }}
+{% endblock %}
+
+{% block body %}
+	<div class="col-12">
+		{{ include('partials/filter.html.twig',  form ) }}
+		<div class="">
+			<div class="album py-5 ">
+				<div class="">
+					{% if products %}
+
+						<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+							{% for product in products %}
+								{{ include('catalogue/card.html.twig', {product:product} ) }}
+							{% endfor %}
+						</div>
+
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block footer %}
+	{{ include('partials/footer.html.twig') }}
+{% endblock %}

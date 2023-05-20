@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des produits
+{% endblock %}
+{% block header %}
+	{{ include('partials/header.html.twig') }}
+{% endblock %}
+
+{% block body %}
+	
+	<div class="flex-shrink-0 ">
+		<div class="container">
+			<div class="example-wrapper">
+				<h1 class="display-4">Liste des produits</h1>
+				<div class="row">
+					{% if products %}
+						{# product card #}
+						{% for product in products %}
+							<div class="col-sm-2 mb-3 mb-sm-0" {{loop.index}}>
+								<div class="card mb-3 overflow-hidden" style="max-width: 18rem; max-height:10rem">
+									{% if product.getImageName %}
+										{# card header #}
+										<img src="{{vich_uploader_asset(product ,'imageFile') }}" class="card-img-top rounded float-start" alt="...">
+									{% endif %}
+									<div class="card-body">
+										<h5 class="card-title">
+											{{ product.wording }}
+										</h5>
+										<p class="card-text">{{product.getProductDescription|striptags|raw|nl2br}}</p>
+										<p class="card-text">
+											<small class="text-muted">{{ product.getProductPrice}}
+												€</small>
+										</p>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					{% endif %}
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</main>{% endblock %}{% block footer %}
+{{ include('partials/footer.html.twig') }}{% endblock %}

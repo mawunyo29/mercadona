@@ -1,0 +1,11 @@
+# config/packages/easy_admin.yaml
+
+easy_admin:
+  entities:
+    Product:
+      class: App\Entity\Product
+      list:
+        fields:
+          - { property: 'id', label: 'ID' }
+          - { property: 'wording', label: 'Libellé' }
+          - { property: 'calculatePrice', label: 'Price', type: 'method' }
