@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+	{% block title %}
+		Liste des produits
+	{% endblock %}
+	
+	{% block stylesheets %}
+		{{ parent() }}
+	{% endblock %}
+	
+	{% block javascripts %}
+		{{ parent() }}
+	{% endblock %}
+	
+	{% block header %}
+		{{ include('partials/header.html.twig') }}
+	{% endblock %}
+	
+	{% block body %}
+		<div class="row">
+			<div class="col-md-2">
+				{{ include('partials/filter.html.twig',  form) }}
+			</div>
+			<div class="col-md-9">
+				
+				<div class="album py-2">
+					<div class="d-flex">
+						{% if products %}
+							{% for product in products %}
+								<div class=" ">
+									{{ include('catalogue/card.html.twig', {product: product}) }}
+								</div>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+	
+	{% block footer %}
+		{{ include('partials/footer.html.twig') }}
+	{% endblock %}
+	

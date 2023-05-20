@@ -1,0 +1,25 @@
+<div class="col-md-2 col col-sm-4">
+	<div class="filter">
+		<div class="d-flex d-flex-nowrap">
+			<div class="d-flex flex-nowrap">
+				<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white sticky-sm-top" style="width: 100%;">
+					<div class="list-group list-group-flush border-bottom scrollarea">
+						<a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+							<div class="d-flex w-100 align-items-center justify-content-between">
+								<strong class="mb-1">Liste des Catégories</strong>
+								<small></small>
+							</div>
+							<div class="col-10 mb-1 small">Filter ou rechercher</div>
+						</a>
+						{{ form_start(form ,{'attr':{'class':'container py-5', 'role':'search'}}) }}
+						{{ form_widget(form.search ,{'attr':{'class':'form-control me-2'}}) }}
+						{{ form_row(form.categories) }}
+						<button class="btn btn-outline-success" type="submit">Search</button>
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
