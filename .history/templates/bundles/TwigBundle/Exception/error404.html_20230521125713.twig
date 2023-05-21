@@ -1,0 +1,15 @@
+{% extends "base.html.twig"%}
+    {% block title %}
+        Page Not Found
+    {% endblock %}
+    {% block header %}
+       {{{{ parent() }}}}
+    {% endblock %}
+{% block body %}
+   
+    <p> 404</p>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock % }
+
