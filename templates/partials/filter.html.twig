@@ -13,7 +13,10 @@
 						</a>
 						{{ form_start(form ,{'attr':{'class':'container py-5', 'role':'search'}}) }}
 						{{ form_widget(form.search ,{'attr':{'class':'form-control me-2'}}) }}
-						{{ form_row(form.categories) }}
+						 {% if form.categories %}
+							{{ form_row(form.categories) }}
+						 {% endif %}
+						
 						<button class="btn btn-outline-success" type="submit">Search</button>
 						{{ form_end(form) }}
 					</div>
