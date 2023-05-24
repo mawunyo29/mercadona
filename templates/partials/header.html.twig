@@ -1,9 +1,31 @@
-
-<header>
-	<!-- Fixed navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top ">
+<div class="container-fluid bg-dark text-light px-0 py-2 top-fixed">
+	<div class="row gx-0 d-none d-lg-flex">
+		<div class="col-lg-7 px-5 text-start">
+			<div class="h-100 d-inline-flex align-items-center me-4">
+				<span class="fa fa-phone-alt me-2"></span>
+				<span>+0040 205 345 6789</span>
+			</div>
+			<div class="h-100 d-inline-flex align-items-center">
+				<span class="far fa-envelope me-2"></span>
+				<span>info@mercadona.com</span>
+			</div>
+		</div>
+		<div class="col-lg-5 px-5 text-end">
+			<div class="h-100 d-inline-flex align-items-center mx-n2">
+				<span>Follow Us:</span>
+				<a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
+				<a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
+				<a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
+				<a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+			</div>
+		</div>
+	</div>
+</div>
+	<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 ">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="{{path('app_home')}}">Mercadona</a>
+			<a class=" navbar-brand d-flex align-items-center px-4 px-lg-5" href="{{path('app_home')}}">
+			<h1 class="m-0 text-success">Mercadona</h1>
+				</a>
 			<button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -22,5 +44,5 @@
 			</div>
 		</div>
 	</nav>
-</header>
+
 

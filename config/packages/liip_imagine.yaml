@@ -17,8 +17,8 @@ liip_imagine:
             quality: 75 #Qualite de l'image
             filters:
                 upscale:
-                    min: [120, 100]
-                thumbnail: { size: [120, 100], mode: outbound }
+                    min: [800, 400]
+                thumbnail: { size: [800, 400], mode: outbound }
         thumbnail:
             quality: 60
             filters:
