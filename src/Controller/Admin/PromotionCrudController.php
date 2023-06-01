@@ -23,16 +23,14 @@ class PromotionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            // IdField::new('id')->onlyOnIndex(),
+            IdField::new('id')->onlyOnIndex(),
             DateTimeField::new('promotion_start','Début de la promotion'),
             DateTimeField::new('promotion_end' ,'Fin de la promotion'),
             NumberField::new('promotion_rate','Taux de promotion')
             ->setHelp('Veuillez saisir un nombre entier entre 0 et 100')
             ->setFormTypeOption('attr', ['min' => 0, 'max' => 100])
             ->setFormTypeOption('empty_data', '0')
-            ->setFormTypeOption('required', true),
-           
-            
+            ->setFormTypeOption('required', true), 
         ];
     }
 
