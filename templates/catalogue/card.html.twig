@@ -2,7 +2,6 @@
     <div class="product-card shadow-sm bg-white .bg-gradient">
         {% if product.getImageName %}
             <img src="{{ vich_uploader_asset(product, 'imageFile')|imagine_filter('card') }}" class="card-img-top" alt="{{ product.getWording }}">
-            <img src="{{ asset(product, 'imageFile')|imagine_filter('card') }}" class="card-img-top" alt="{{ product.getWording }}">
         {% endif %}
         <h5 class="card-title p-1">{{ product.getWording }}</h5>
         <div class="card-body">
