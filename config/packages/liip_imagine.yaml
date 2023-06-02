@@ -6,9 +6,9 @@ liip_imagine:
               web_root: '%kernel.project_dir%/public'
               cache_prefix: media/cache
     twig:
-        mode: legacy
+      mode: lazy
     # valid drivers options include "gd" or "gmagick" or "imagick"
-    driver: gd
+    driver: gmagick
     cache: default
     webp:
         generate: true
