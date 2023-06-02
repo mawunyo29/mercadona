@@ -1,11 +1,11 @@
-<div class="col">
-    <div class="card shadow-sm">
+<div class="container mt-3">
+    <div class="product-card shadow-sm bg-white .bg-gradient">
         {% if product.getImageName %}
-            <img src="{{ vich_uploader_asset(product, 'imageFile')|imagine_filter('card') }}"  alt="{{ product.getWording }}">
+            <img src="{{ vich_uploader_asset(product, 'imageFile')|imagine_filter('card') }}" class="card-img-top" alt="{{ product.getWording }}">
         {% endif %}
-        <h5 class="card-title p-2">{{ product.getWording }}</h5>
+        <h5 class="card-title p-1">{{ product.getWording }}</h5>
         <div class="card-body">
-            <p class="card-text text-wrap" style="max-height: 10rem ; width:6rem">{{ product.getProductDescription|striptags|raw|nl2br }}</p>
+            <p class="text-sm-start text" >{{ product.getProductDescription|striptags|raw|nl2br }}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary">{{ product.category }}</button>
@@ -17,6 +17,7 @@
                         <small class="font-weight-bold text-danger">{{ product.getCalculatePrice }} €</small>
                     {% else %}
                         <small class="text-muted">{{ product.getProductPrice }} €</small>
+                       
                     {% endif %}
                 </p>
             </div>
