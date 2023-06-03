@@ -104,7 +104,7 @@ class Promotion
     public function removeProduct(Product $product): self
     {
         if ($this->products->removeElement($product)) {
-            $product->removePromotion($this);
+            // $product->removePromotion($this);
         }
 
         return $this;

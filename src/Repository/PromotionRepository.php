@@ -39,6 +39,9 @@ class PromotionRepository extends ServiceEntityRepository
         }
     }
 
+    // remove the product from the promotion where if the promition end date is passed
+    
+
 //    /**
 //     * @return Promotion[] Returns an array of Promotion objects
 //     */

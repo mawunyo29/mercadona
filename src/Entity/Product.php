@@ -101,6 +101,9 @@ class Product
                 // Produit en promotion
                 return $this->product_price * (1 - ($promotion->getPromotionRate() / 100));
             }
+            if($now > $promotion->getPromotionEnd()){
+                $this->promotions->removeElement($promotion);
+            }
         }
 
         // Pas de promotion en cours, prix normal
