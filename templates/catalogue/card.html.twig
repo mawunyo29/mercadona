@@ -3,9 +3,9 @@
         
         {% if product.getImageName %}
             {# get the image from build/images/products  using vich#}
-            <img src="{{vich_uploader_asset(product, 'imageFile')|imagine_filter('card') }}" class="card-img-top" alt="{{ product.getWording }}">
+            {# <img src="{{vich_uploader_asset(product, 'imageFile')|imagine_filter('card') }}" class="card-img-top" alt="{{ product.getWording }}"> #}
               
-            {# <img src="{{asset('/images/products/' ~ product.getImageName)|imagine_filter('card') }}" alt="Mon image"> #}
+            <img src="{{asset('/images/products/' ~ product.getImageName)|imagine_filter('card') }}" alt="Mon image">
         {% endif %}
         <h5 class="card-title p-1">{{ product.getWording }}</h5>
         <div class="card-body">
