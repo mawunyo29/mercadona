@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Product;
+use App\Entity\Promotion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -89,5 +90,38 @@ class ProductRepository extends ServiceEntityRepository
             ->orderBy('p' . $value->sort, $value->order)
             ->getQuery()
             ->getResult();
+    }
+
+    public function findPromotion(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->join('p.promotions', 'pr')
+            ->andWhere('pr.promotion_end < :date')
+            ->setParameter('date', new \DateTime())
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findPromotionByCategory($value): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->join('p.promotions', 'pr')
+            ->join('p.category', 'c')
+            ->andWhere('pr.promotion_end < :date')
+            ->andWhere('c.id IN (:categories)')
+            ->setParameter('date', new \DateTime())
+            ->setParameter('categories', $value)
+            ->getQuery()
+            ->getResult();
+    }
+
+    //  detache les produits de la promotion lorsque la date est depassé
+
+    public function detachPromotion(Product $product, Promotion $promotion): void
+    {
+        $product->removePromotion($promotion);
+        $this->getEntityManager()->flush();
     }
 }

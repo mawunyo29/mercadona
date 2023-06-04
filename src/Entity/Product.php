@@ -249,6 +249,11 @@ class Product
         return $this;
     }
 
+    public function getPrice(): ?string
+    {
+        return $this->product_price;
+    }
+
     
     
 }

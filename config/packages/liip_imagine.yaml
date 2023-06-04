@@ -37,7 +37,8 @@ liip_imagine:
                 thumbnail:
                     size: [120, 120]
                     mode: outbound
-          
+   
+    
                     
                 
 
