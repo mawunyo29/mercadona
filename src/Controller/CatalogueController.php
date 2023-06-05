@@ -11,8 +11,10 @@ use App\Repository\ProductRepository;
 use PHPUnit\Framework\Constraint\IsEmpty;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 
 use function PHPUnit\Framework\isEmpty;
@@ -71,5 +73,22 @@ class CatalogueController extends AbstractController
         return $this->render('catalogue/show.html.twig', [
             'product' => $product,
         ]);
+    }
+
+    #[Route('/catalogue/product/{id}', name: 'app_catalogue_download', methods: ['POST'] , priority: 20)]
+    public function downloadImage(Product $product): Response
+    {
+        dd($product);
+        $file = $product->getImageName();
+        //transformer le nom du fichier en image  et et créer un fichier temporaire temporaire qui sera supprimé à la fin de la requête
+         $file = tempnam(sys_get_temp_dir(), $product->getImageName());
+        $response = new BinaryFileResponse($file);
+        //charger le fichier dans la réponse dans le header
+        $response->headers->set('Content-Type', 'image/jpeg');
+        //afficher dans la baliise img du twig
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $product->getImageName());
+        dd($response);
+        return $response;
+
     }
 }
