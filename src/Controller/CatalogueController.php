@@ -8,6 +8,7 @@ use App\Event\ProductEndPromotionEvent;
 use App\Form\SearchType;
 use App\Model\SearchData;
 use App\Repository\ProductRepository;
+use Aws\S3\S3Client;
 use PHPUnit\Framework\Constraint\IsEmpty;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -17,15 +18,38 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 
-use function PHPUnit\Framework\isEmpty;
+
+
 
 class CatalogueController extends AbstractController
 {
+    private $client;
+ 
     protected $promotion;
     #[Route('/catalogue', name: 'app_catalogue')]
     public function index(ProductRepository $productRepository, Request $request, EventDispatcherInterface $eventDispatcherInterface,): Response
     {
         //promotion where date end < now
+        //get aws s3 resource
+        // $s3 = $this->client;
+        // //get all objects in bucket
+        // $objects = $s3->listObjects([
+        //     'Bucket' => 'mercadonaimages',
+        // ]);
+        // //get all keys in bucket
+        // $keys = $objects->get('Contents');
+        // //get all keys in bucket
+        
+        // // access contents of the object
+        // foreach ($keys as $key) {
+        //     $key = $key['Key'];
+        //     $s3->getObject([
+        //         'Bucket' => 'mercadonaimages',
+        //         'Key' => $key,
+        //         'SaveAs' => '/' . $key,
+        //     ]);
+        // }
+        // dd($keys);
 
         $data =  new SearchData();
         if ($request->query->get('order')) {
@@ -53,6 +77,10 @@ class CatalogueController extends AbstractController
         }
 
 
+        $data = $form->getData();
+
+
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             // Effectuer la recherche dans la source de données
@@ -75,13 +103,13 @@ class CatalogueController extends AbstractController
         ]);
     }
 
-    #[Route('/catalogue/product/{id}', name: 'app_catalogue_download', methods: ['POST'] , priority: 20)]
+    #[Route('/catalogue/product/{id}', name: 'app_catalogue_download', methods: ['POST'], priority: 20)]
     public function downloadImage(Product $product): Response
     {
-        dd($product);
+
         $file = $product->getImageName();
         //transformer le nom du fichier en image  et et créer un fichier temporaire temporaire qui sera supprimé à la fin de la requête
-         $file = tempnam(sys_get_temp_dir(), $product->getImageName());
+        $file = tempnam(sys_get_temp_dir(), $product->getImageName());
         $response = new BinaryFileResponse($file);
         //charger le fichier dans la réponse dans le header
         $response->headers->set('Content-Type', 'image/jpeg');
@@ -89,6 +117,5 @@ class CatalogueController extends AbstractController
         $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $product->getImageName());
         dd($response);
         return $response;
-
     }
 }

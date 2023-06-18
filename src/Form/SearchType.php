@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class SearchType extends AbstractType
 {
@@ -19,6 +20,13 @@ class SearchType extends AbstractType
             'attr' => [
                 'placeholder' => 'Search',
                 'class' => 'form-control',
+            ],
+            'constraints' => [
+                //eviter les injections sql
+                new Regex([
+                    'pattern' => '/^[a-zA-Z0-9]+$/',
+                    'message' => 'Please enter a valid search',
+                ]),
             ],
             'required' => false,
         ])

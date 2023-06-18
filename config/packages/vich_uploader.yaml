@@ -1,16 +1,18 @@
 # config/packages/vich_uploader.yaml or app/config/config.yml
 vich_uploader:
     db_driver: orm
-    twig: true
-    metadata:
-      auto_detection: true
-      type: attribute
+    storage: flysystem
+    
     mappings:
         products:
-            uri_prefix: /images/products
-            upload_destination: '%kernel.project_dir%/public/images/products'
+            uri_prefix: /images
+            # For Oneup/FlysystemBundle v4
+            upload_destination: storage.aws
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
+   
+          
+       
     

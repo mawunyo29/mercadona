@@ -174,7 +174,9 @@ class Product
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
      */
     public function setImageFile(?File $imageFile = null): void
-    {
+    {   
+        
+
         $this->imageFile = $imageFile;
 
         if (null !== $imageFile) {
@@ -190,7 +192,8 @@ class Product
     }
 
     public function setImageName(?string $imageName): self
-    {
+    {  
+        
         $this->imageName = $imageName;
 
         return $this;

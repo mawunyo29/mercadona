@@ -23,11 +23,11 @@ class ProductCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('wording' ,'Libellé');
-        yield TextEditorField::new('product_description');
-        yield TextField::new('product_price');
+        yield TextEditorField::new('product_description','Description');
+        yield TextField::new('product_price','Prix');
         yield TextareaField::new('imageFile')->setFormType(VichImageType::class)->hideOnIndex();
-        yield ImageField::new('imageName')->setBasePath('/images/products')->hideOnForm();
-        yield AssociationField::new('category');
+        yield ImageField::new('imageName')->setBasePath('https://mercadonaimages.s3.eu-west-3.amazonaws.com/images')->hideOnForm();
+        yield AssociationField::new('category','Catégorie');
         yield AssociationField::new('promotions')
         ->setFormTypeOption('by_reference', false);
     }

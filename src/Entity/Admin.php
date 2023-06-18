@@ -6,7 +6,7 @@ use App\Repository\AdminRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
 class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -16,6 +16,8 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank(message: 'Please enter an email')]
+    #[Assert\Email(message: 'Please enter a valid email')]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -24,7 +26,10 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
-    #[ORM\Column]
+    #[ORM\Column ]
+    #[Assert\NotBlank(message: 'Please enter a password')]
+    #[Assert\Length(min: 6, minMessage: 'Your password should be at least {{ limit }} characters')]
+    #[Assert\Regex(pattern: '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/', message: 'Your password must contain at least one uppercase letter, one lowercase letter and one number')]
     private ?string $password = null;
 
     public function getId(): ?int

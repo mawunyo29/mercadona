@@ -1,0 +1,24 @@
+# Read the documentation at https://github.com/thephpleague/flysystem-bundle/blob/master/docs/1-getting-started.md
+flysystem:
+    storages:
+        uploads.storage.aws:
+            adapter: 'aws'
+            options:
+                client: 'Aws\S3\S3Client'
+                bucket: 'my-bucket'
+                prefix: '%env(S3_STORAGE_PREFIX)%'
+
+        uploads.storage.local:
+            adapter: 'local'
+            options:
+                directory: '%kernel.project_dir%/var/storage/uploads'
+
+        uploads.storage.memory:
+            adapter: 'memory'
+
+        uploads.storage:
+            adapter: 'lazy'
+            options:
+                source: '%env(APP_UPLOADS_SOURCE)%'
+                
+                 

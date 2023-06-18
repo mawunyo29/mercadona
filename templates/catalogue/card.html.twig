@@ -6,7 +6,7 @@
             <img src="{{vich_uploader_asset(product, 'imageFile')|imagine_filter('card') }}" class="card-img-top" alt="{{ product.getWording }}">
            
             
-            {# <img src="{{asset('/images/products/' ~ product.getImageName)|imagine_filter('card') }}" alt="Mon image"> #}
+            <img src="{{asset('https://mercadonaimages.s3.eu-west-3.amazonaws.com/images/' ~ product.getImageName) }}" alt="Mon image">
         {% endif %}
         <h5 class="card-title p-1">{{ product.getWording }}</h5>
         <div class="card-body">
